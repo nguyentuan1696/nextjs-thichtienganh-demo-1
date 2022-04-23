@@ -1,0 +1,50 @@
+:root {
+  --heading-color: inherit;
+  --heading-margin-top: 0;
+  --heading-margin-bottom: var(--spacing-vertical);
+  --heading-font-family: var(--font-family-base);
+  --heading-font-weight: var(--font-weight-bold);
+  --heading-line-height: 1.25;
+
+  --h1-font-size: 2rem;
+  --h2-font-size: 1.5rem;
+  --h3-font-size: 1.25rem;
+  --h4-font-size: 1rem;
+  --h5-font-size: 0.875rem;
+  --h6-font-size: 0.85rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-weight: var(--heading-font-weight);
+  line-height: var(--heading-line-height);
+  margin: var(--heading-margin-top) 0 var(--heading-margin-bottom) 0;
+}
+
+@for $size from 1 to 6 {
+  h$(size) {
+    font-size: var(--h$(size)-font-size);
+  }
+}
+
+
+.anchor {
+  opacity: 0;
+  padding-left: 0.5rem;
+  transition: opacity var(--transition-fast);
+}
+
+.anchor:before {
+  content: '#';
+}
+
+.anchor:focus,
+*:hover > .anchor {
+  opacity: 1;
+}

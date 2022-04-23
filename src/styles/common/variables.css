@@ -1,0 +1,145 @@
+
+:root {
+  --color-scheme: light;
+
+  /* Colors. */
+  --dark-value: 10%;
+  --darker-value: 15%;
+  --darkest-value: 30%;
+  --light-value: 15%;
+  --lighter-value: 30%;
+  --lightest-value: 50%;
+
+
+  --contrast-background-value: 90%;
+  --contrast-foreground-value: 70%;
+  /* Using slightly different values for dark mode */
+  --contrast-background-dark-value: 70%;
+  --contrast-foreground-dark-value: 90%;
+
+  --color-primary: #3578e5;
+  --color-secondary: #ebedf0;
+  --color-success: #00a400;
+  --color-info: #54c7ec;
+  --color-warning: #ffba00;
+  --color-danger: #fa383e;
+
+  @each $color in (primary, secondary, success, info, warning, danger) {
+    --color-$(color)-dark: color-mod(
+      var(--color-$(color)) shade(var(--dark-value))
+    );
+    --color-$(color)-darker: color-mod(
+      var(--color-$(color)),
+      shade(var(--darker-value))
+    );
+    --color-$(color)-darkest: color-mod(
+      var(--color-$(color)),
+      shade(var(--darkest-value))
+    );
+    --color-$(color)-light: color-mod(
+      var(--color-$(color)),
+      tint(var(--light-value))
+    );
+    --color-$(color)-lighter: color-mod(
+      var(--color-$(color)),
+      tint(var(--lighter-value))
+    );
+    --color-$(color)-lightest: color-mod(
+      var(--color-$(color)),
+      tint(var(--lightest-value))
+    );
+    --color-$(color)-contrast-background: color-mod(
+      var(--color-$(color)),
+      tint(var(--contrast-background-value))
+    );
+    --color-$(color)-contrast-foreground: color-mod(
+      var(--color-$(color)),
+      shade(var(--contrast-foreground-value))
+    );
+  }
+
+  --color-white: #fff;
+  --color-black: #000;
+
+  --color-gray-0: var(--color-white);
+  --color-gray-100: #f5f6f7;
+  --color-gray-200: #ebedf0;
+  --color-gray-300: #dadde1;
+  --color-gray-400: #ccd0d5;
+  --color-gray-500: #bec3c9;
+  --color-gray-600: #8d949e;
+  --color-gray-700: #606770;
+  --color-gray-800: #444950;
+  --color-gray-900: #1c1e21;
+  --color-gray-1000: var(--color-black);
+
+  --color-emphasis-0: var(--color-gray-0);
+  --color-emphasis-100: var(--color-gray-100);
+  --color-emphasis-200: var(--color-gray-200);
+  --color-emphasis-300: var(--color-gray-300);
+  --color-emphasis-400: var(--color-gray-400);
+  --color-emphasis-500: var(--color-gray-500);
+  --color-emphasis-600: var(--color-gray-600);
+  --color-emphasis-700: var(--color-gray-700);
+  --color-emphasis-800: var(--color-gray-800);
+  --color-emphasis-900: var(--color-gray-900);
+  --color-emphasis-1000: var(--color-gray-1000);
+
+  /* Base. */
+  --color-content: var(--color-emphasis-900);
+  --color-content-inverse: var(--color-emphasis-0);
+  --color-content-secondary: #525860;
+
+  --background-color: transparent; /* Body's background. */
+  --background-surface-color: var(--color-content-inverse);
+  --global-border-width: 1px;
+  --global-radius: 0.4rem;
+
+  --hover-overlay: rgba(0, 0, 0, 0.05);
+
+  /* Typography. */
+  --font-color-base: var(--color-content);
+  --font-color-base-inverse: var(--color-content-inverse);
+  --font-color-secondary: var(--color-content-secondary);
+  --font-family-base: system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  --font-size-base: 100%;
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-semibold: 500;
+  --font-weight-bold: 700;
+
+  --font-weight-base: var(--font-weight-normal);
+  --line-height-base: 1.65;
+
+  /* Spacing. */
+  --global-spacing: 1rem;
+  --spacing-vertical: var(--global-spacing);
+  --spacing-horizontal: var(--global-spacing);
+
+  /* Transitions. */
+  --transition-fast: 200ms;
+  --transition-slow: 400ms;
+  --transition-timing-default: cubic-bezier(0.08, 0.52, 0.52, 1);
+
+  /* Shadows. */
+  --global-shadow-lw: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  --global-shadow-md: 0 5px 40px rgba(0, 0, 0, 0.2);
+  --global-shadow-tl: 0 12px 28px 0 rgba(0, 0, 0, 0.2),
+    0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  /* Z-index. */
+  --z-index-dropdown: 100;
+  --z-index-fixed: 200;
+  --z-index-overlay: 400;
+
+    --site-primary-hue-saturation: 167, 68%;
+    --site-primary-hue-saturation-light: 167, 56%;
+}
+
+
+@custom-media --narrow-window (max-width: 996px);

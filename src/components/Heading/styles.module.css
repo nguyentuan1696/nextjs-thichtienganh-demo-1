@@ -1,0 +1,23 @@
+.hash-link {
+  opacity: 0;
+  padding-left: 0.5rem;
+  transition: opacity var(--transition-fast);
+  user-select: none;
+}
+
+.hash-link:before {
+  content: '#';
+}
+
+.hash-link:focus,
+*:hover > .hash-link {
+  opacity: 1;
+}
+
+.anchorWithStickyNavbar {
+  scroll-margin-top: calc(var(--navbar-height) + 0.5rem);
+}
+
+.anchorWithHideOnScrollNavbar {
+  scroll-margin-top: 0.5rem;
+}

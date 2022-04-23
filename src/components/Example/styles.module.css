@@ -1,0 +1,14 @@
+.example {
+	background-color: var(--color-emphasis-100);
+	border-radius: var(--global-radius);
+	color: inherit;
+	font: 90% / 1.45 var(--font-family-monospace);
+	margin: 0 0 var(--spacing-vertical);
+	overflow: auto;
+	padding: 1rem;
+
+	&__title {
+		display: flex;
+		align-items: center;
+	}
+}

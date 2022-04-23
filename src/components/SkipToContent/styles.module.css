@@ -1,0 +1,14 @@
+.skipToContent {
+  position: fixed;
+  top: 1rem;
+  left: 100%;
+  z-index: calc(var(--z-index-fixed) + 1);
+  padding: calc(var(--global-spacing) / 2) var(--global-spacing);
+  color: var(--color-emphasis-900);
+  background-color: var(--background-surface-color);
+}
+
+.skipToContent:focus {
+  left: 1rem;
+  box-shadow: var(--global-shadow-md);
+}

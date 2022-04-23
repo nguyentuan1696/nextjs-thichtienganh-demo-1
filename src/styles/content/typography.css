@@ -1,0 +1,81 @@
+:root {
+  /* Links. */
+  --link-color: var(--color-primary);
+  --link-decoration: none;
+  --link-hover-color: var(--link-color);
+  --link-hover-decoration: underline;
+
+  /* Paragraphs. */
+  --paragraph-margin-bottom: var(--leading);
+
+  /* Blockquotes. */
+  --blockquote-font-size: var(--font-size-base);
+  --blockquote-border-left-width: 2px;
+  --blockquote-padding-horizontal: var(--spacing-horizontal);
+  --blockquote-padding-vertical: 0;
+  --blockquote-shadow: none;
+  --blockquote-color: var(--color-emphasis-800);
+  --blockquote-border-color: var(--color-emphasis-300);
+
+  /* Horizontal Rules. */
+  --hr-border-color: var(--color-emphasis-500);
+  --hr-border-width: 1px;
+  --hr-margin-vertical: 1.5rem;
+}
+
+strong {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  /* autoprefixer: ignore next */
+  text-decoration: var(--link-decoration);
+  @mixin transition color;
+
+  &:hover {
+    color: var(--link-hover-color);
+    /* autoprefixer: ignore next */
+    text-decoration: var(--link-hover-decoration);
+  }
+
+  &:not([href]) {
+    text-decoration: none;
+  }
+}
+
+/* Paragraphs */
+p {
+  margin: 0 0 var(--paragraph-margin-bottom);
+}
+
+/* Blockquotes */
+blockquote {
+  border-color: var(--blockquote-border-color);
+  border-style: solid;
+  border-width: 0;
+  border-left-width: var(--blockquote-border-left-width);
+  box-shadow: var(--blockquote-shadow);
+  color: var(--blockquote-color);
+  font-size: var(--blockquote-font-size);
+  margin: 0 0 var(--spacing-vertical);
+  padding: var(--blockquote-padding-vertical)
+    var(--blockquote-padding-horizontal);
+
+  & > :first-child {
+    margin-top: 0;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Horizontal Rules */
+hr {
+  border-color: var(--hr-border-color);
+  border-style: solid;
+  border-width: var(--hr-border-width);
+  margin: var(--hr-margin-vertical) 0;
+}

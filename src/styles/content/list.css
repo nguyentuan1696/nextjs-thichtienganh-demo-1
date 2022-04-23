@@ -1,0 +1,39 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+:root {
+  --list-left-padding: 2rem;
+  --list-margin: 1rem;
+  --list-item-margin: 0.25rem;
+  --list-paragraph-margin: 1rem;
+}
+
+/* Lists */
+ul,
+ol {
+  margin: 0 0 var(--list-margin);
+  padding-left: var(--list-left-padding);
+}
+
+ol ol,
+ul ol {
+  list-style-type: lower-roman;
+}
+
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 0;
+}
+
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+  list-style-type: lower-alpha;
+}

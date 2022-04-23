@@ -1,0 +1,270 @@
+.navbar {
+	background-color: var(--background-surface-color);
+	box-shadow: var(--global-shadow-lw);
+	display: flex;
+	height: 3.75rem;
+	padding: calc(var(--spacing-vertical) * 0.5) var(--spacing-horizontal);
+
+	@media print {
+		display: none;
+	}
+
+	& > .container,
+	& > .container-fluid {
+		display: flex;
+
+		@media (--narrow-window) {
+			padding: 0;
+		}
+	}
+
+	&--fixed-top {
+		position: sticky;
+		top: 0;
+		z-index: var(--z-index-fixed);
+	}
+
+	&__inner {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		width: 100%;
+	}
+
+	&__brand {
+		align-items: center;
+		color: var(--font-color-base);
+		display: flex;
+		margin-right: 1rem;
+		min-width: 0;
+
+		&:hover {
+			color: var(--color-primary);
+			text-decoration: none;
+		}
+	}
+
+	&__title {
+		flex: 1 1 auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		color: var(--font-color-base);
+	}
+
+	&__toggle {
+		margin-right: 0.5rem;
+
+		@media (min-width: 996px) {
+			display: none;
+		}
+	}
+
+	&__logo {
+		flex: 0 0 auto;
+		height: 2rem;
+		margin-right: 0.5rem;
+
+		img {
+			height: 100%;
+		}
+	}
+
+	&__items {
+		align-items: center;
+		display: flex;
+		flex: 1;
+		min-width: 0;
+
+		&--center {
+			flex: 0 0 auto;
+
+			^^&__brand {
+				margin: 0;
+			}
+
+			+ ^&--right {
+				flex: 1;
+			}
+		}
+
+		&--right {
+			flex: 0 0 auto;
+			justify-content: flex-end;
+
+			> :last-child {
+				padding-right: 0;
+			}
+		}
+	}
+
+	&__item {
+		display: inline-block;
+		padding: 0.25rem 0.75rem;
+
+		&.dropdown {
+			^^&__link:not([href]) {
+				pointer-events: none;
+			}
+		}
+
+		@media (--narrow-window) {
+			display: none;
+		}
+	}
+
+	&__link {
+		color: var(--font-color-base);
+		font-weight: var(--font-weight-semibold);
+
+		&:hover,
+		&--active {
+			color: var(--color-primary);
+			text-decoration: none;
+		}
+	}
+
+	&--primary {
+		--menu-color: var(--color-gray-300);
+		--navbar-link-color: var(--color-gray-100);
+		--navbar-search-input-background-color: rgba(255, 255, 255, 0.1);
+		--navbar-search-input-placeholder-color: rgba(255, 255, 255, 0.5);
+
+		color: var(--color-white);
+	}
+
+	&--primary {
+		--navbar-background-color: var(--color-primary);
+		--navbar-link-hover-color: var(--color-white);
+		--menu-color-active: var(--color-white);
+		--navbar-search-input-color: var(--color-emphasis-500);
+	}
+
+	&__search {
+		&-input {
+			appearance: none; /* Algolia will add type="search" to the input in Safari and Safari's styling will override the styling here. */
+			background: var(--navbar-search-input-background-color)
+				var(--navbar-search-input-icon) no-repeat 0.75rem center / 1rem 1rem;
+			border: none;
+			border-radius: 2rem;
+			color: var(--navbar-search-input-color);
+			cursor: text;
+			display: inline-block;
+			font-size: 0.9rem;
+			height: 2rem;
+			padding: 0 0.5rem 0 2.25rem;
+			width: 12.5rem;
+
+			&::placeholder {
+				color: var(--navbar-search-input-placeholder-color);
+			}
+
+			@media (--narrow-window) {
+				width: 9rem;
+			}
+		}
+	}
+
+	&-sidebar {
+		background-color: var(--background-surface-color);
+		bottom: 0;
+		box-shadow: var(--global-shadow-md);
+		left: 0;
+		opacity: 0;
+		overflow-x: hidden;
+		position: fixed;
+		top: 0;
+		transform: translate3d(-100%, 0, 0);
+		visibility: hidden;
+		width: 83vw;
+		@mixin transition opacity visibility transform, 250ms, ease-in-out;
+
+		&--show {
+			^&,
+			^&__backdrop {
+				opacity: 1;
+				visibility: visible;
+			}
+
+			^& {
+				transform: translate3d(0, 0, 0);
+			}
+		}
+
+		&__backdrop {
+			background-color: rgba(0, 0, 0, 0.6);
+			bottom: 0;
+			left: 0;
+			opacity: 0;
+			position: fixed;
+			right: 0;
+			top: 0;
+			visibility: hidden;
+			@mixin transition opacity visibility, 100ms, ease-in-out;
+		}
+
+		&__brand {
+			align-items: center;
+			box-shadow: var(--global-shadow-lw);
+			display: flex;
+			flex: 1;
+			height: 3.75rem;
+			padding: calc(var(--spacing-vertical) * 0.5) var(--spacing-horizontal);
+		}
+
+		&__items {
+			display: flex;
+			height: calc(100% - 3.75rem);
+			transform: translateZ(0);
+			transition: transform var(--transition-fast) ease-in-out;
+
+			&--show-secondary {
+				transform: translate3d(calc((83vw) * -1), 0, 0);
+			}
+		}
+
+		&__item {
+			flex-shrink: 0;
+			padding: 0.5rem;
+			width: calc(83vw);
+		}
+
+		&__back {
+			background: var(--menu-color-background-active);
+			font-size: 15px;
+			font-weight: var(--button-font-weight);
+			margin: 0 0 0.2rem -0.5rem;
+			padding: 0.6rem 1.5rem;
+			position: relative;
+			text-align: left;
+			top: -0.5rem;
+			width: calc(100% + 1rem);
+		}
+
+		&__close {
+			display: flex;
+			margin-left: auto;
+		}
+	}
+}
+
+/*
+Hide toggle in small viewports
+ */
+/* @media (max-width: 996px) {
+  .toggle {
+    display: none;
+  }
+} */
+
+.navbarHideable {
+  transition: transform var(--transition-fast) ease;
+}
+
+.navbarHidden {
+  transform: translate3d(0, calc(-100% - 2px), 0);
+}
+
+.navbarSidebarToggle {
+  margin-right: 1rem;
+}
